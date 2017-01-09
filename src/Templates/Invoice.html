@@ -1,0 +1,79 @@
+<html>
+	<head>
+		<style>
+			
+			.Header 
+				{
+					text-align: center;
+				}
+
+			.InfoBox 
+				{
+					width: 100%;
+				}
+
+			.InfoBox tr td 
+				{
+					width: 33%;
+				}
+
+			.InvoiceItem
+				{
+					width: 80%;
+					margin: 0px auto;
+					border: 1px solid black;
+				}
+
+			.InvoiceItem tr th
+				{
+					text-align: left;
+				}
+
+		</style>
+	</head>
+
+	<body>
+		<br>
+		<div class="Header">
+			<h1>{{Company.Name}}</h1>
+			<p>{{Customer.StreetAddress}} {{Customer.City}} {{Customer.Province}}, {{Customer.Country}}</p>
+		</div>
+		<table class='InfoBox'>
+			<tr>
+				<td>
+					<div style="margin-left: 20%">
+						Invoice Number: {{Invoice.Number}}
+						Invoice Date: {{Invoice.Date}}
+						Account Number: {{Invoice.Account}}
+					</div>
+				</td>
+				<td></td>
+				<td>
+					<div style="margin-left: 20%">
+						{{Customer.Name}}
+						{{Customer.StreetAddress}}
+						{{Customer.City}} {{Customer.Province}}, {{Customer.Country}}
+					</div>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<br>
+		<table class='InvoiceItem'>
+			<tr>
+				<th>
+					Invoice Item
+				</th>
+				<th>
+					Total
+				<th>
+			</tr>
+			{{each #Items}}
+				<tr>
+					<td>{{this.description}}</td>
+					<td>{{this.total}}</td>
+				</tr>
+			{{/each}}
+		</table>
+	</body>
+</html>
