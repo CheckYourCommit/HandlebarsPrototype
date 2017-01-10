@@ -22,6 +22,7 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-clean'
 	grunt.loadNpmTasks 'grunt-run'
 
-	grunt.registerTask 'compile', [ 'coffee', 'copy' ]
+	grunt.registerTask 'build', [ 'coffee', 'copy' ]
+	grunt.registerTask 'rebuild', [ 'clean', 'coffee', 'copy' ]
 	grunt.registerTask 'create', ['run']
 	
