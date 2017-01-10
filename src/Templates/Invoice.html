@@ -3,31 +3,47 @@
 		<style>
 			
 			.Header 
-				{
-					text-align: center;
-				}
+			{
+				text-align: center;
+			}
 
 			.InfoBox 
-				{
-					width: 100%;
-				}
+			{
+				width: 100%;
+			}
 
 			.InfoBox tr td 
-				{
-					width: 33%;
-				}
+			{
+				width: 33%;
+			}
 
 			.InvoiceItem
-				{
-					width: 80%;
-					margin: 0px auto;
-					border: 1px solid black;
-				}
+			{
+				width: 80%;
+				margin: 0px auto;
+				border: 2px solid black;
+                border-spacing: 0px;
+			}
 
 			.InvoiceItem tr th
-				{
-					text-align: left;
-				}
+			{
+				text-align: left;
+				border-bottom: 2px solid black;
+			}
+
+			.odd 
+			{
+				background-color: lightgrey;
+				margin: 0px;
+				border: 0px;
+			}
+
+			.even 
+			{
+				background-color: white;
+				margin: 0px;
+				border:; 0px;
+			}
 
 		</style>
 	</head>
@@ -36,7 +52,7 @@
 		<br>
 		<div class="Header">
 			<h1>{{Company.Name}}</h1>
-			<p>{{Customer.StreetAddress}} {{Customer.City}} {{Customer.Province}}, {{Customer.Country}}</p>
+			<p>{{Company.StreetAddress}} {{Company.City}} {{Company.Province}}, {{Company.Country}}</p>
 		</div>
 		<table class='InfoBox'>
 			<tr>
@@ -60,20 +76,32 @@
 		<br>
 		<br>
 		<table class='InvoiceItem'>
-			<tr>
+			<thead>
 				<th>
 					Invoice Item
 				</th>
 				<th>
-					Total
+					Quantity
+				</th>
 				<th>
-			</tr>
-		{{#each Items}}
-				<tr>
-					<td>{{this.description}}</td>
-					<td>{{this.total}}</td>
-				</tr>
-		{{/each}}
+					Unit Price
+				</th>
+				<th>
+					Total
+				</th>
+			</thead>
+			<tbody>
+			{{#each Items}}
+					<tr class='{{oddEven @key}}'>
+						<td>{{this.description}}</td>
+						<td>{{this.quantity}}</td>
+						<td>{{this.unitPrice}}</td>
+						<td>{{total quantity unitPrice}}</td>
+					</tr>
+			{{/each}}
+			</tbody>
+			<tfoot>
+			</tfoot>
 		</table>
 	</body>
 </html>

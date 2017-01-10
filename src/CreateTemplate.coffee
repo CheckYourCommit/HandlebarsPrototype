@@ -19,24 +19,36 @@ context =
 		Date: '12/16/2016'
 	Customer:
 		Name: 'Snowball Inc.'
-		StreetAddress: '6654 East 23rd Terrace'
+		StreetAddress: '1123 West Oak Street'
 		City: 'Quoth'
 		Province: 'Southington'
 		Country: 'Denmark'
 	Items: [
 		{
 			description: 'Truck'
-			Total: 1400
+			quantity: 1
+			unitPrice: 1400
 		}
 		{
 			description: 'Car'
-			Total: 1600
+			quantity: 1
+			unitPrice: 3444
 		}
 		{
 			description: 'Hat'
-			Total: 11
+			quantity: 24
+			unitPrice: 11
 		}
 	]
+
+Handlebars.registerHelper 'oddEven', (index) ->
+	if index % 2 == 0
+		return "even"
+	else
+		return "odd"
+
+Handlebars.registerHelper 'total', (qty, price) ->
+	return qty * price
 
 html = template(context)
 
